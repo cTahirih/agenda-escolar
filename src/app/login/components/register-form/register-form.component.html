@@ -1,0 +1,139 @@
+<mat-card>
+  <div class="row">
+    <div class="col-12">
+      <div class="w-100 text-center">
+        <p class="login100-form-title font-weight-bold mb-4">
+          CREAR UNA CUENTA
+        </p>
+      </div>
+      <mat-horizontal-stepper [formGroup]="stepForm">
+        <mat-step [stepControl]="stepForm.controls['firstGroup']">
+          <ng-template matStepLabel>Datos Personales</ng-template>
+          <form [formGroup]="registerForm">
+            <div class="my-3">
+              <span
+                *ngIf="formControlName.touched && formControlName.errors"
+                class="text-danger animated fadeIn">El nombre es obligatorio</span>
+              <div class="wrap-input100 m-b-16">
+                <input class="input100"
+                       type="text"
+                       placeholder="Nombres"
+                       formControlName="name"
+                >
+
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <div class="my-3">
+              <span
+                *ngIf="formControlLastName.touched && formControlLastName.errors"
+                class="text-danger animated fadeIn">El nombre es obligatorio</span>
+              <div class="wrap-input100 m-b-16">
+                <input class="input100"
+                       type="text"
+                       placeholder="Apellidos"
+                       formControlName="lastName"
+                >
+
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <div class="my-3">
+              <span
+                *ngIf="formControlPhoneNumber.touched && formControlPhoneNumber.errors"
+                class="text-danger animated fadeIn">El nombre es obligatorio</span>
+              <div class="wrap-input100 m-b-16">
+                <input class="input100"
+                       type="text"
+                       placeholder="Número telefónico"
+                       formControlName="phoneNumber"
+                >
+
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+          </form>
+          <div class="container-login100-form-btn">
+            <button mat-button matStepperNext class="login100-form-btn" type="button">
+              Siguiente
+            </button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Datos de la cuenta</ng-template>
+
+          <form [formGroup]="registerForm">
+            <div class="my-3">
+              <span
+                *ngIf="formControlUserName.touched && formControlUserName.errors"
+                class="text-danger animated fadeIn">El correo es obligatorio</span>
+              <div class="wrap-input100 m-b-16">
+                <input class="input100"
+                       type="text"
+                       placeholder="Usuario"
+                       formControlName="userName"
+                >
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <div class="my-3">
+              <span
+                *ngIf="formControlPass.touched && formControlPass.errors"
+                class="text-danger animated fadeIn">El nombre es obligatorio</span>
+              <div class="wrap-input100 m-b-16">
+                <input class="input100"
+                       type="password"
+                       placeholder="Contraseña"
+                       formControlName="pass"
+                >
+
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <div class="my-3">
+              <span
+                *ngIf="formControlConfirmPass.touched && formControlConfirmPass.errors"
+                class="text-danger animated fadeIn">El nombre es obligatorio</span>
+              <div class="wrap-input100 m-b-16">
+                <input class="input100"
+                       type="password"
+                       placeholder="Confirme su contraseña"
+                       formControlName="confirmPass"
+                >
+
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+          </form>
+
+          <div class="text-center w-100 my-3">
+            <div class="contact100-form-checkbox d-flex justify-content-center mb-3">
+              <label class="label-check ldr-form_size gray-dark">
+                <input type="checkbox" value="">
+                <span class="checkmark"></span>
+              </label>
+              <span>Recordar mi usuario</span>
+            </div>
+
+            <div>
+              <a routerLink="/home/login" class="txt1">
+                ¿Ya tienes cuenta? / Ingresar
+              </a>
+            </div>
+          </div>
+
+          <div class="container-login100-form-btn ">
+            <button class="login100-form-btn" type="button" (click)="register()">
+              Crear cuenta
+            </button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper >
+
+    </div>
+  </div>
+</mat-card>

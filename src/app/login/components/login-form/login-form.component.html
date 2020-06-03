@@ -1,0 +1,77 @@
+<mat-card>
+  <div class="row">
+    <div class="col-12">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        class="login100-form validate-form flex-sb flex-w"
+      >
+        <div class="w-100 text-center">
+          <p class="login100-form-title font-weight-bold mb-4">
+            LOGIN
+          </p>
+        </div>
+
+        <div class="my-3">
+          <span
+            *ngIf="getLoginForm.submitted && formControlUserName.errors"
+            class="text-danger animated fadeIn"
+          >
+          El correo es obligatorio
+        </span>
+          <div class="wrap-input100 m-b-16">
+            <input class="input100"
+                   type="text"
+                   name="userName"
+                   placeholder="Usuario"
+                   formControlName="userName"
+            >
+
+            <span class="focus-input100"></span>
+          </div>
+        </div>
+
+        <div class="my-3">
+          <span
+            *ngIf="getLoginForm.submitted && formControlPass.errors"
+            class="text-danger animated fadeIn"
+          >
+          La contraseña debe de ser más de 6 letras
+        </span>
+          <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+            <input class="input100"
+                   type="password"
+                   name="pass"
+                   placeholder="Contraseña"
+                   formControlName="pass"
+            >
+            <span class="focus-input100"></span>
+          </div>
+        </div>
+
+        <div class="w-100 text-center my-3">
+          <div class="contact100-form-checkbox d-flex justify-content-center mb-3">
+            <label class="label-check ldr-form_size gray-dark">
+              <input type="checkbox" value="">
+              <span class="checkmark"></span>
+            </label>
+            <span>Recordar mi usuario</span>
+          </div>
+
+          <div>
+            <a routerLink="/home/registro" class="txt1">
+              ¿No tienes cuenta?
+            </a>
+          </div>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" type="submit">
+            Ingresar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</mat-card>

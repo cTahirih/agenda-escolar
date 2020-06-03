@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+.h-aside {
+  min-height: 100vh;
+}
+
+
+
+.aside-img-container {
+  width: 300px;
+
+  @include media-breakpoint-up(md) {
+    width: 400px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 500px;
+  }
+}
