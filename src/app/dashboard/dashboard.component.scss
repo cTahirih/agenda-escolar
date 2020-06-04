@@ -1,0 +1,49 @@
+.mat-toolbar {
+  background: #0D2C35;
+  & .navbar-brand {
+    color:  #cbcbd2;
+    /*    &:hover {
+          color: #db0a5a;
+        }*/
+  }
+}
+
+.bg-gray {
+  background: #fafafa;;
+}
+
+.bg-white {
+  background: #f8f8f8;
+}
+
+.list-group-item {
+  background: inherit;
+}
+
+.menu_btn {
+  color: #cbcbd2;
+  cursor: pointer;
+  & .material-icons {
+    font-size: 35px;
+  }
+}
+
+.sidenav-header {
+  height: 10vh;
+}
+
+.sidenav-content {
+  min-height: 90vh;
+}
+
+.sidenav-footer {
+  height: 10vh;
+}
+
+.list-group-item {
+  a:hover {
+    text-decoration: none;
+    font-size: 16.5px;
+    font-weight: bold;
+  }
+}

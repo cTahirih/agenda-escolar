@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<ng-container>
+  <mat-toolbar class="navbar sidenav-header">
+    <div class="menu_btn pl-md-4" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">clear</mat-icon>
+    </div>
+    <a class="navbar-brand mr-0 pr-md-4" href="#">
+      <img src="./assets/images/desk.png" width="60" height="auto" class="d-inline-block align-top" alt="Desk">
+    </a>
+  </mat-toolbar>
+
+  <div class="container-fluid">
+    <mat-sidenav-container class="sidenav-content row">
+      <mat-sidenav
+        #sidenav mode="side" class="example-sidenav col-12 col-md-3 col-lg-2 bg-gray"
+        [fixedInViewport]="false" opened="false" mode="over"
+      >
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item px-0">
+            <a routerLink="/dashboard/home">Inicio</a>
+          </li>
+        </ul>
+      </mat-sidenav>
+      <mat-sidenav-content class="bg-white" style="min-height: 90vh;">
+        <div class="col-12 px-md-5">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+  <!--<mat-toolbar class="sidenav-footer">Footer</mat-toolbar>-->
+</ng-container>
