@@ -1,136 +1,102 @@
 <mat-card>
   <div class="row">
     <div class="col-12">
+
       <div class="w-100 text-center">
-        <p class="login100-form-title font-weight-bold mb-4">
+        <p class="login100-form-title color-purple-dark font-weight-bold mb-4">
           CREAR UNA CUENTA
         </p>
       </div>
-      <mat-horizontal-stepper [formGroup]="stepForm">
-        <mat-step [stepControl]="stepForm.controls['firstGroup']">
-          <ng-template matStepLabel>Datos Personales</ng-template>
-          <form [formGroup]="registerForm">
-            <div class="my-3">
-              <span
-                *ngIf="formControlName.touched && formControlName.errors"
-                class="text-danger animated fadeIn">El nombre es obligatorio</span>
-              <div class="wrap-input100 m-b-16">
-                <input class="input100"
-                       type="text"
-                       placeholder="Nombres"
-                       formControlName="name"
-                >
 
-                <span class="focus-input100"></span>
-              </div>
-            </div>
-
-            <div class="my-3">
-              <span
-                *ngIf="formControlLastName.touched && formControlLastName.errors"
-                class="text-danger animated fadeIn">El nombre es obligatorio</span>
-              <div class="wrap-input100 m-b-16">
-                <input class="input100"
-                       type="text"
-                       placeholder="Apellidos"
-                       formControlName="lastName"
-                >
-
-                <span class="focus-input100"></span>
-              </div>
-            </div>
-
-            <div class="my-3">
-              <span
-                *ngIf="formControlPhoneNumber.touched && formControlPhoneNumber.errors"
-                class="text-danger animated fadeIn">El nombre es obligatorio</span>
-              <div class="wrap-input100 m-b-16">
-                <input class="input100"
-                       type="text"
-                       placeholder="Número telefónico"
-                       formControlName="phoneNumber"
-                >
-
-                <span class="focus-input100"></span>
-              </div>
-            </div>
-          </form>
-          <div class="container-login100-form-btn">
-            <button mat-button matStepperNext class="login100-form-btn" type="button">
-              Siguiente
-            </button>
-          </div>
-        </mat-step>
+      <mat-horizontal-stepper>
         <mat-step>
           <ng-template matStepLabel>Datos de la cuenta</ng-template>
 
           <form [formGroup]="registerForm">
             <div class="my-3">
-              <span
-                *ngIf="formControlUserName.touched && formControlUserName.errors"
-                class="text-danger animated fadeIn">El correo es obligatorio</span>
-              <div class="wrap-input100 m-b-16">
-                <input class="input100"
-                       type="text"
-                       placeholder="Usuario"
-                       formControlName="userName"
-                >
-                <span class="focus-input100"></span>
-              </div>
+              <app-input-form
+                [fControl]="formControlUserName"
+                placeHolder="Usuario"
+                type="text"
+              ></app-input-form>
             </div>
 
             <div class="my-3">
-              <span
-                *ngIf="formControlPass.touched && formControlPass.errors"
-                class="text-danger animated fadeIn">El nombre es obligatorio</span>
-              <div class="wrap-input100 m-b-16">
-                <input class="input100"
-                       type="password"
-                       placeholder="Contraseña"
-                       formControlName="pass"
-                >
-
-                <span class="focus-input100"></span>
-              </div>
+              <app-input-form
+                [fControl]="formControlPass"
+                placeHolder="Contraseña"
+                type="password"
+              ></app-input-form>
             </div>
 
             <div class="my-3">
-              <span
-                *ngIf="formControlConfirmPass.touched && formControlConfirmPass.errors"
-                class="text-danger animated fadeIn">El nombre es obligatorio</span>
-              <div class="wrap-input100 m-b-16">
-                <input class="input100"
-                       type="password"
-                       placeholder="Confirme su contraseña"
-                       formControlName="confirmPass"
-                >
-
-                <span class="focus-input100"></span>
-              </div>
+              <app-input-form
+                [fControl]="formControlConfirmPass"
+                placeHolder="Confirme su contraseña"
+                type="password"
+              ></app-input-form>
             </div>
           </form>
-
           <div class="text-center w-100 my-3">
             <div class="contact100-form-checkbox d-flex justify-content-center mb-3">
-              <label class="label-check ldr-form_size gray-dark">
-                <input type="checkbox" value="">
-                <span class="checkmark"></span>
-              </label>
-              <span>Recordar mi usuario</span>
+              <app-input-checkbox
+                text="Recordar mi usuario"
+              ></app-input-checkbox>
             </div>
 
             <div>
-              <a routerLink="/home/login" class="txt1">
+              <a routerLink="/home/login" class="color-turq font-16">
                 ¿Ya tienes cuenta? / Ingresar
               </a>
             </div>
           </div>
-
-          <div class="container-login100-form-btn ">
-            <button class="login100-form-btn" type="button" (click)="register()">
-              Crear cuenta
+          <div class="container-login100-form-btn">
+            <button mat-button matStepperNext class="login100-form-btn font-16 w-100" type="button">
+              Siguiente
             </button>
           </div>
+        </mat-step>
+
+        <mat-step>
+
+          <ng-template matStepLabel>Datos Personales</ng-template>
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="my-3">
+              <app-input-form
+                [fControl]="formControlName"
+                placeHolder="Nombres"
+                type="text"
+              ></app-input-form>
+            </div>
+
+            <div class="my-3">
+              <app-input-form
+                [fControl]="formControlLastName"
+                placeHolder="Apellidos"
+                type="text"
+              ></app-input-form>
+            </div>
+
+            <div class="my-3">
+              <app-input-form
+                [fControl]="formControlPhoneNumber"
+                placeHolder="Número telefónico"
+                type="text"
+              ></app-input-form>
+            </div>
+
+            <div class="my-3 text-center">
+              <app-input-radio text="Docente" class="mr-3"></app-input-radio>
+              <app-input-radio text="Tutor"></app-input-radio>
+            </div>
+
+            <div class="container-login100-form-btn ">
+              <button class="login100-form-btn font-16 w-100" type="submit">
+                Crear cuenta
+              </button>
+            </div>
+          </form>
+
         </mat-step>
       </mat-horizontal-stepper >
 

@@ -1,0 +1,50 @@
+/* The container */
+.label-check {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  & input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  & .checkmark {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 19.5px;
+    width: 19.5px;
+    border-radius: 3px;
+    border: 1.5px solid #ced4da;
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+  }
+  & input:checked ~ .checkmark {
+    background-color: #44a6aa;
+    border-color: #44a6aa;
+  }
+  & input:checked ~ .checkmark:after {
+    display: block;
+  }
+}
+/* Style the checkmark/indicator */
+.label-check .checkmark:after {
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+

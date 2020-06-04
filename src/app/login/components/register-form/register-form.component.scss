@@ -1,0 +1,29 @@
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.login100-form-title {
+  font-size: 30px;
+}
+
+.login100-form-btn {
+  color: #fff;
+  padding: 0 20px;
+  height: 62px;
+  background-color: #83cbce;
+  border-radius: 5px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background-color: #44a6aa;
+}

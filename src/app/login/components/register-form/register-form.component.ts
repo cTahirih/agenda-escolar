@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
-  styleUrls: ['../login-form/login-form.component.scss']
+  styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
   @HostBinding('class') class = 'w-100';

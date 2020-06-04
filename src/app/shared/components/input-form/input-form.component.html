@@ -1,17 +1,17 @@
-<div class="my-3">
-          <span
-            *ngIf="fControl.touched && fControl.errors"
-            class="text-danger animated fadeIn"
-          >
-          El correo es obligatorio
-        </span>
+<div>
+  <span
+    *ngIf="fControl.touched && fControl.errors"
+    class="text-danger animated fadeIn"
+  >
+    {{error || 'El campo es obligatorio'}}
+  </span>
   <div class="wrap-input100 m-b-16">
-    <input class="input100"
-           type="text"
-           placeholder="Usuario"
-           [formControl]="fControl"
+    <input
+      class="input100"
+      [type]="type"
+      [placeholder]="placeHolder"
+      [formControl]="fControl"
     >
-
     <span class="focus-input100"></span>
   </div>
 </div>
