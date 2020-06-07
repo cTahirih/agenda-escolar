@@ -7,6 +7,9 @@ import { InputRadioComponent } from './components/input-radio/input-radio.compon
 import { SelectComponent } from './components/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PopupErrorComponent } from './components/popup-error/popup-error.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -21,7 +24,10 @@ import { PopupErrorComponent } from './components/popup-error/popup-error.compon
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }

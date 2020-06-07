@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-popup-error',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<PopupErrorComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

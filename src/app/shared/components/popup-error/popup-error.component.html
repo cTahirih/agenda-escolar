@@ -1,1 +1,11 @@
-<p>popup-error works!</p>
+<div class="row">
+  <div class="col-12 text-center">
+    <mat-icon aria-hidden="false" aria-label="Icon error" size="48px">error_outline</mat-icon>
+    <div mat-dialog-content>
+      <p>Ha ocurrido un error, su usuario o contraseña no son correctos</p>
+    </div>
+  </div>
+  <div class="col-12 d-flex justify-content-center" mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cerrar</button>
+  </div>
+</div>
