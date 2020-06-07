@@ -1,1 +1,36 @@
-home
+<mat-card
+  class="bg-light-pink"
+>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="color-dark-blue">Bienvenido <strong>{{ userName }}</strong></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-4 text-center">
+      <app-select
+        labelText="Area Curricular"
+        [options]="courses"
+      ></app-select>
+    </div>
+    <div class="col-12 col-md-4 text-center">
+      <app-select
+        labelText="Grado"
+        [options]="grade"
+      ></app-select>
+    </div>
+    <div class="col-12 col-md-4 text-center">
+      <app-select
+        labelText="Sección"
+        [options]="section"
+      ></app-select>
+    </div>
+  </div>
+</mat-card>
+
+<div class="row">
+  <div class="col-12">
+    <hr class="divider-orange">
+  </div>
+</div>

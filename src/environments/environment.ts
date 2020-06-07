@@ -10,7 +10,9 @@ export const environment = {
       grade: 'grados/',
       section: 'secciones/',
       course: 'materias/',
-      role: 'roles/'
+      role: 'roles/',
+      login: 'oauth/token',
+      newUser: 'teachers/'
     }
   }
 };

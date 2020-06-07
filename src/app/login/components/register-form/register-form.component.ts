@@ -1,5 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -9,19 +11,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterFormComponent implements OnInit {
   @HostBinding('class') class = 'w-100';
   registerForm: FormGroup;
-  stepForm: FormGroup;
-
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.createForm();
-
-    this.stepForm = this.fb.group({
-      firstForm: ['', [Validators.required]],
-      secondForm: ['', [Validators.required]],
-    });
   }
 
   createForm() {
@@ -31,18 +28,39 @@ export class RegisterFormComponent implements OnInit {
       phoneNumber: ['', [Validators.required]],
       userName: ['', [Validators.required]],
       pass: ['', [Validators.required]],
-      confirmPass: ['', [Validators.required]]
+      confirmPass: ['', [Validators.required]],
+      rememberUser: [false]
     });
   }
 
   register() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+
+      this.loginService.registerUser({
+        confirmPass: this.registerForm.value.confirmPass,
+        lastName: this.registerForm.value.lastName,
+        name: this.registerForm.value.name,
+        pass: this.registerForm.value.pass,
+        phoneNumber: this.registerForm.value.phoneNumber,
+        userName: this.registerForm.value.userName
+      })
+        .subscribe(
+          () => {
+
+            if (this.getFormControlRememberUser.value) {
+              localStorage.setItem('userName', this.registerForm.value.userName);
+            }
+            this.router.navigateByUrl('/dashboard/home');
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     }
   }
 
-  get getRegisterForm() {
-    return this.registerForm.controls;
+  get getFormControlRememberUser() {
+    return this.registerForm.get('rememberUser') as FormControl;
   }
 
   get formControlName() {

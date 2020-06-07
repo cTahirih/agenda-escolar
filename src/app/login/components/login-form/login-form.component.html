@@ -43,8 +43,9 @@
         </div>
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn font-16 w-100" type="submit">
-            INGRESAR
+          <button class="login100-form-btn font-16 w-100" type="submit" [disabled]="loading">
+            <span *ngIf="!loading">INGRESAR</span>
+            <span *ngIf="loading">CARGANDO...</span>
           </button>
         </div>
 

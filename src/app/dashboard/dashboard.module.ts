@@ -7,6 +7,10 @@ import { DashboardRouting } from './dashboard.routing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfigService } from './services/config.service';
 
 
 
@@ -16,9 +20,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CommonModule,
     RouterModule,
     DashboardRouting,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule,
+    SharedModule
+  ],
+  providers: [
+    ConfigService
   ]
 })
 export class DashboardModule { }

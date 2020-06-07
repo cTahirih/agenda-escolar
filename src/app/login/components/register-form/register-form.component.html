@@ -41,19 +41,20 @@
             <div class="contact100-form-checkbox d-flex justify-content-center mb-3">
               <app-input-checkbox
                 text="Recordar mi usuario"
+                [control]="getFormControlRememberUser"
               ></app-input-checkbox>
-            </div>
-
-            <div>
-              <a routerLink="/home/login" class="link color-turq font-16">
-                ¿Ya tienes cuenta? / Ingresar
-              </a>
             </div>
           </div>
           <div class="container-login100-form-btn">
             <button mat-button matStepperNext class="login100-form-btn font-16 w-100" type="button">
               Siguiente
             </button>
+          </div>
+
+          <div class="text-center w-100 my-3">
+            <a routerLink="/home/login" class="link color-turq font-16">
+              ¿Ya tienes cuenta? / Ingresar
+            </a>
           </div>
         </mat-step>
 
