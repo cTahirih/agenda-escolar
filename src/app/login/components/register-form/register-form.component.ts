@@ -2,6 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { INewUser } from '../../interfaces/login.interface';
 
 @Component({
   selector: 'app-register-form',
@@ -29,6 +30,7 @@ export class RegisterFormComponent implements OnInit {
       userName: ['', [Validators.required]],
       pass: ['', [Validators.required]],
       confirmPass: ['', [Validators.required]],
+      role: [null, [Validators.required]],
       rememberUser: [false]
     });
   }
@@ -36,14 +38,9 @@ export class RegisterFormComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
 
-      this.loginService.registerUser({
-        confirmPass: this.registerForm.value.confirmPass,
-        lastName: this.registerForm.value.lastName,
-        name: this.registerForm.value.name,
-        pass: this.registerForm.value.pass,
-        phoneNumber: this.registerForm.value.phoneNumber,
-        userName: this.registerForm.value.userName
-      })
+      const body = this.getBodyRequest(this.registerForm.value.role);
+
+      this.loginService.registerUser(body, this.registerForm.value.role)
         .subscribe(
           () => {
 
@@ -57,6 +54,27 @@ export class RegisterFormComponent implements OnInit {
           }
         );
     }
+  }
+
+  getBodyRequest(role: boolean) {
+    return {
+      name: this.registerForm.value.name,
+      lastName: this.registerForm.value.lastName,
+      email: 'correo@gmail.com',
+      phoneNumber: this.registerForm.value.phoneNumber,
+      user: {
+        id: null,
+        password: this.registerForm.value.pass,
+        userName: this.registerForm.value.userName,
+        createAt: null,
+        status: true,
+        role: {
+          id: role ? 2 : 4,
+          role: role ? 'teacher' : 'tutor',
+          status: true
+        }
+      }
+    };
   }
 
   get getFormControlRememberUser() {
@@ -85,5 +103,9 @@ export class RegisterFormComponent implements OnInit {
 
   get formControlConfirmPass() {
     return this.registerForm.get('confirmPass') as FormControl;
+  }
+
+  get formControlRole() {
+    return this.registerForm.get('role') as FormControl;
   }
 }

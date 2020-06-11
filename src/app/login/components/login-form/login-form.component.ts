@@ -36,8 +36,14 @@ export class LoginFormComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       this.loading = true;
-      this.loginService.login(this.loginForm.value).subscribe(
+      console.log(this.loginForm.value);
+      this.loginService.login({
+        userName: this.loginForm.value.userName,
+        password: this.loginForm.value.pass
+      }).subscribe(
         (response: any) => {
+          console.log(response);
+          // const payload = JSON.parse(atob(response.access_token).split('.')[1]);
           this.router.navigateByUrl('/dashboard/home');
           this.loading = false;
         },

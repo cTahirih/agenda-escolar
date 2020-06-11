@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { INewUser, IUser } from '../interfaces/login.interface';
+import { INewUser, IUserName } from '../interfaces/login.interface';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -18,15 +18,17 @@ export class LoginService {
     this.readToken();
   }
 
-  registerUser( user: INewUser) {
-    const authData = {
-      ...user,
-      returnSecureToken: false
-    };
+  registerUser( user: INewUser, typeUser) {
+    let url: string;
+    if (typeUser) {
+      url = this.urlBase + this.endpoints.config.newUser.teacher;
+    } else {
+      url = this.urlBase + this.endpoints.config.newUser.tutor;
+    }
 
     return this.http.post(
-      this.urlBase + this.endpoints.config.newUser,
-      authData
+      url,
+      user
     ).pipe(
       map((response: any) => {
         console.log(response);
@@ -35,7 +37,7 @@ export class LoginService {
     );
   }
 
-  login(user: IUser) {
+  login(user: IUserName) {
     const url = this.urlBase + this.endpoints.config.login;
     const credentials = btoa('student_notes' + ':' + 'student_notes_app_cliente_2020');
     const httpHeaders = new HttpHeaders({
@@ -46,7 +48,7 @@ export class LoginService {
     const params = new URLSearchParams();
     params.set('grant_type', 'password');
     params.set('username', user.userName);
-    params.set('password', user.pass);
+    params.set('password', user.password);
 
     return this.http.post(url, params.toString(), {headers: httpHeaders})
       .pipe(

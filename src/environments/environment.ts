@@ -12,7 +12,10 @@ export const environment = {
       course: 'materias/',
       role: 'roles/',
       login: 'oauth/token',
-      newUser: 'teachers/'
+      newUser: {
+        teacher: 'teachers/',
+        tutor: 'tutor/'
+      }
     }
   }
 };

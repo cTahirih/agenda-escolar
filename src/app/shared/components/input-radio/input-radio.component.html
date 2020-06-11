@@ -1,5 +1,5 @@
 <label class="container-input-radio">
   {{ text }}
-  <input type="radio" name="radio">
+  <input [formControl]="control" [value]="value" type="radio" name="radio">
   <span class="checkmark"></span>
 </label>

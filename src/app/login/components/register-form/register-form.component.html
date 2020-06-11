@@ -87,8 +87,8 @@
             </div>
 
             <div class="my-3 text-center">
-              <app-input-radio text="Docente" class="mr-3"></app-input-radio>
-              <app-input-radio text="Tutor"></app-input-radio>
+              <app-input-radio [control]="formControlRole" [value]="true" text="Docente" class="mr-3"></app-input-radio>
+              <app-input-radio [control]="formControlRole" [value]="false" text="Tutor"></app-input-radio>
             </div>
 
             <div class="container-login100-form-btn ">
